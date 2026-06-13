@@ -1,14 +1,15 @@
 // client/src/services/api.js
 import axios from 'axios';
-import useStore from '../store/useStore'; // <-- NEW: Import your store directly
+import useStore from '../store/useStore';
 
+// Uses the environment variable if available, otherwise defaults to localhost
 const API = axios.create({
-    baseURL: 'http://localhost:5000', 
+    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000', 
 });
 
 // --- THE INTERCEPTOR: Automatically attach the token to every request ---
 API.interceptors.request.use((req) => {
-    // Look directly inside Zustand for the token (No more local storage parsing!)
+    // Look directly inside Zustand for the token
     const token = useStore.getState().user?.token;
     
     if (token) {
@@ -19,7 +20,6 @@ API.interceptors.request.use((req) => {
 });
 
 // --- YOUR API ROUTES ---
-
 export const getDashboardData = () => API.get('/api/interview/dashboard');
 
 export const createAssessment = (formData) => API.post('/api/interview/upload', formData, {
