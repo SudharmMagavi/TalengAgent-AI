@@ -1,0 +1,7 @@
+# Ignore backend secrets and packages
+server/node_modules/
+server/.env
+
+# Ignore frontend packages and builds
+client/node_modules/
+client/dist/

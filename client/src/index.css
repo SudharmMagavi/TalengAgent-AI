@@ -1,0 +1,9 @@
+/* client/src/index.css */
+@import "tailwindcss";
+
+/* You can still add custom CSS variables down here if needed! */
+@theme {
+  --color-brand-primary: #38bdf8;
+  --color-brand-accent: #0ea5e9;
+  --color-brand-dark: #0f172a;
+}
