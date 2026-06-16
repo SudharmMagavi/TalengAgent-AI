@@ -19,7 +19,13 @@ API.interceptors.request.use((req) => {
     return req;
 });
 
-// --- YOUR API ROUTES ---
+// --- AUTH ROUTES ---
+export const loginOrganization = (credentials) => API.post('/api/auth/login', credentials);
+
+export const registerOrganization = (userData) => API.post('/api/auth/register', userData);
+
+
+// --- ASSESSMENT ROUTES ---
 export const getDashboardData = () => API.get('/api/interview/dashboard');
 
 export const createAssessment = (formData) => API.post('/api/interview/upload', formData, {
